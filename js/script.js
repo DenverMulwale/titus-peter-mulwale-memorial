@@ -14,3 +14,32 @@ var tt=document.getElementById("tt"),root=document.documentElement;
 function label(){tt.textContent=root.getAttribute("data-theme")==="dark"?"\u2600 Light":"\u263E Navy"}
 tt.onclick=function(){var n=root.getAttribute("data-theme")==="dark"?"light":"dark";root.setAttribute("data-theme",n);try{localStorage.setItem("theme",n)}catch(e){}label()};
 label();
+
+(function(){
+  var cards=[].slice.call(document.querySelectorAll(".tribute"));
+  function check(){
+    cards.forEach(function(c){
+      if(c.classList.contains("open"))return;
+      c.classList.add("clamp");
+      var b=c.querySelector(".body"),over=b.scrollHeight>b.clientHeight+2;
+      c.classList.toggle("clamp",over);
+      c.querySelector(".more").hidden=!over;
+    });
+  }
+  cards.forEach(function(c){
+    var by=c.querySelector(".by"),b=document.createElement("div"),btn=document.createElement("button");
+    b.className="body";
+    while(c.firstChild&&c.firstChild!==by)b.appendChild(c.firstChild);
+    c.insertBefore(b,by);
+    btn.type="button";btn.className="more";btn.textContent="Read more";
+    c.insertBefore(btn,by);
+    btn.onclick=function(){
+      var o=c.classList.toggle("open");
+      btn.textContent=o?"Show less":"Read more";
+      if(o)c.classList.remove("clamp");else{check();c.scrollIntoView({block:"nearest"})}
+    };
+  });
+  window.addEventListener("load",check);
+  window.addEventListener("resize",check);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(check);
+})();

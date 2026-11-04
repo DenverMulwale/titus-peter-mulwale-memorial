@@ -55,3 +55,26 @@ section h2::after{content:"";display:block;width:64px;height:2px;background:var(
 footer{margin-top:80px;background:var(--hero);color:var(--herotx);text-align:center;padding:48px 20px calc(48px + env(safe-area-inset-bottom,0px))}
 footer h3{font-size:2rem;color:var(--gold)}footer p{margin:8px 0 0;opacity:.8;font-size:15px}
 @media (max-width:760px){.hero .in{grid-template-columns:1fr;gap:28px}.hero{padding-top:36px}.frame{order:-1}}
+
+/* .tributes{columns:2 320px;column-gap:18px}
+.tribute{break-inside:avoid;margin:0 0 18px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:20px 22px}
+.tribute p{margin:0 0 .9em;font-size:16px;line-height:1.7}
+.tribute .by{margin-top:14px;font:600 1.25rem "Cormorant Garamond",Georgia,serif;color:var(--gold)} */
+
+/* .tributes{display:grid;grid-template-columns:1fr;gap:18px;max-width:760px;margin:0 auto}
+.tribute{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:22px 26px}
+.tribute p{margin:0 0 .9em;font-size:16px;line-height:1.7}
+.tribute .by{margin-top:14px;font:600 1.25rem "Cormorant Garamond",Georgia,serif;color:var(--gold)} */
+
+.tributes{display:grid;grid-template-columns:1fr;gap:18px;max-width:1080px;margin:0 auto;align-items:start}
+@media (min-width:620px){.tributes{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:940px){.tributes{grid-template-columns:repeat(3,1fr)}}
+.tribute{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:22px 24px}
+.tribute p{margin:0 0 .9em;font-size:15.5px;line-height:1.7}
+.tribute .by{margin-top:14px;font:600 1.25rem "Cormorant Garamond",Georgia,serif;color:var(--gold)}
+.tribute.clamp .body{max-height:14em;overflow:hidden;position:relative}
+.tribute.clamp .body::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3.5em;background:linear-gradient(transparent,var(--card))}
+.tribute .more{background:none;border:1px solid var(--gold);color:var(--gold);border-radius:20px;padding:3px 16px;font:inherit;font-size:14px;cursor:pointer;margin-top:4px}
+.tribute .more:hover{background:var(--gold);color:#111}
+.tribute .more[hidden]{display:none}
+.tribute.open{grid-column:1/-1}
