@@ -71,7 +71,25 @@ footer h3{font-size:2rem;color:var(--gold)}footer p{margin:8px 0 0;opacity:.8;fo
 @media (min-width:940px){.tributes{grid-template-columns:repeat(3,1fr)}}
 .tribute{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:22px 24px}
 .tribute p{margin:0 0 .9em;font-size:15.5px;line-height:1.7}
-.tribute .by{margin-top:14px;font:600 1.25rem "Cormorant Garamond",Georgia,serif;color:var(--gold)}
+/* .tribute .by{margin-top:14px;font:600 1.25rem "Cormorant Garamond",Georgia,serif;color:var(--gold)} */
+/* .tribute .by{display:flex;align-items:center;gap:12px;margin-top:14px} */
+
+.tribute .by span{font:600 1.25rem "Cormorant Garamond",Georgia,serif;color:var(--gold);line-height:1.2}
+.tribute .by small{display:block;font:400 13px Inter,system-ui,sans-serif;color:var(--mute)}
+/* .tribute .by img,.tribute .by .av{width:52px;height:52px;border-radius:50%;flex:none;border:2px solid var(--gold)} */
+
+.tribute{display:flex;flex-direction:column}
+.tribute .more{align-self:flex-start}
+.tribute .by{order:-1;display:flex;align-items:center;gap:16px;margin:0 0 18px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.tribute .by img,.tribute .by .av{width:84px;height:84px;min-width:84px;flex:none;border-radius:50%;border:3px solid var(--gold);box-shadow:0 3px 10px rgba(0,0,0,.25)}
+.tribute .by img{object-fit:cover;object-position:center 20%}
+.tribute .by .av{display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--line);color:var(--gold);font:600 1.6rem "Cormorant Garamond",Georgia,serif}
+.tribute .by>span:not(.av){min-width:0;font:600 1.4rem/1.2 "Cormorant Garamond",Georgia,serif;color:var(--gold)}
+.tribute .by small{display:block;margin-top:4px;font:400 13px/1.3 Inter,system-ui,sans-serif;font-style:normal;color:var(--mute)}
+@media (max-width:620px){.tribute .by img,.tribute .by .av{width:72px;height:72px;min-width:72px}}
+
+.tribute .by img{object-fit:cover;object-position:center 25%}
+.tribute .by .av{display:flex;align-items:center;justify-content:center;background:var(--line);color:var(--gold);font:600 1.1rem "Cormorant Garamond",Georgia,serif}
 .tribute.clamp .body{max-height:14em;overflow:hidden;position:relative}
 .tribute.clamp .body::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3.5em;background:linear-gradient(transparent,var(--card))}
 .tribute .more{background:none;border:1px solid var(--gold);color:var(--gold);border-radius:20px;padding:3px 16px;font:inherit;font-size:14px;cursor:pointer;margin-top:4px}
