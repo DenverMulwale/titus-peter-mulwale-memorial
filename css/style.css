@@ -100,3 +100,31 @@ footer h3{font-size:2rem;color:var(--gold)}footer p{margin:8px 0 0;opacity:.8;fo
 .more-photos{text-align:center;margin:28px 0 0}
 .btn{display:inline-block;border:1px solid var(--gold);color:var(--gold);border-radius:24px;padding:10px 26px;text-decoration:none;font-size:15px;letter-spacing:.04em}
 .btn:hover{background:var(--gold);color:#111}
+
+/* ---------- tribute photos: same size as Denvar's portfolio photo ---------- */
+.tribute{--ph:190px;--ph-r:50%}  /* use --ph-r:28px for a rounded square */
+.tribute .by img,.tribute .by .av,.tribute .by .pics{width:var(--ph);height:var(--ph);min-width:var(--ph);max-width:100%;border-radius:var(--ph-r)}
+.tribute .by .av{font-size:2.6rem}
+
+/* ---------- hero portrait: floating photo slideshow ---------- */
+.frame.hero-pics{position:relative;aspect-ratio:1/1;width:min(100%,460px);justify-self:center;border-radius:28px;animation:float 6s ease-in-out infinite}
+.frame.hero-pics img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
+.frame.hero-pics img:nth-child(1){object-position:62% 30%}
+.frame.hero-pics img:nth-child(2){object-position:50% 8%}
+.frame.hero-pics img:nth-child(3){object-position:50% 12%}
+.frame.hero-pics img.on,.frame.hero-pics img:first-child{opacity:1}
+.frame.hero-pics.run img:first-child:not(.on){opacity:0}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@media (prefers-reduced-motion:reduce){.frame.hero-pics{animation:none}}
+@media (max-width:760px){.frame.hero-pics{width:min(100%,340px)}}
+
+/* ---------- tribute photos: small rounded frame with floating motion ---------- */
+.tribute{--ph:120px;--ph-r:22px}
+.tribute .by img,.tribute .by .av,.tribute .by .pics{width:var(--ph);height:var(--ph);min-width:var(--ph);max-width:100%;border-radius:var(--ph-r);border:4px solid var(--gold);box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.tribute .by .pics img{border:0;box-shadow:none;border-radius:0}
+.tribute .by .av{font-size:1.9rem}
+.tribute .by>img,.tribute .by>.av,.tribute .by>.pics{animation:bob 5s ease-in-out infinite}
+.tribute:nth-child(2n) .by>img,.tribute:nth-child(2n) .by>.av,.tribute:nth-child(2n) .by>.pics{animation-delay:-1.7s}
+.tribute:nth-child(3n) .by>img,.tribute:nth-child(3n) .by>.av,.tribute:nth-child(3n) .by>.pics{animation-delay:-3.3s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@media (prefers-reduced-motion:reduce){.tribute .by>img,.tribute .by>.av,.tribute .by>.pics{animation:none}}
