@@ -2,13 +2,13 @@
 var DATES_TEXT="";
 if(DATES_TEXT)document.getElementById("dates").textContent=DATES_TEXT;
 var figs=[].slice.call(document.querySelectorAll("#grid figure")),lb=document.getElementById("lb"),im=lb.querySelector("img"),cp=lb.querySelector("p"),cur=0;
-function show(i){cur=(i+figs.length)%figs.length;var f=figs[cur].querySelector("img");im.src=f.src;im.alt=f.alt;cp.textContent=figs[cur].querySelector("figcaption").textContent;lb.classList.add("on")}
+function show(i){lb.classList.remove("single");cur=(i+figs.length)%figs.length;var f=figs[cur].querySelector("img");im.src=f.src;im.alt=f.alt;cp.textContent=figs[cur].querySelector("figcaption").textContent;lb.classList.add("on")}
 figs.forEach(function(f,i){f.addEventListener("click",function(){show(i)})});
 lb.querySelector(".x").onclick=function(){lb.classList.remove("on")};
 lb.querySelector(".pv").onclick=function(e){e.stopPropagation();show(cur-1)};
 lb.querySelector(".nx").onclick=function(e){e.stopPropagation();show(cur+1)};
 lb.addEventListener("click",function(e){if(e.target===lb)lb.classList.remove("on")});
-document.addEventListener("keydown",function(e){if(!lb.classList.contains("on"))return;if(e.key==="Escape")lb.classList.remove("on");if(e.key==="ArrowLeft")show(cur-1);if(e.key==="ArrowRight")show(cur+1)});
+document.addEventListener("keydown",function(e){if(!lb.classList.contains("on"))return;if(e.key==="Escape")lb.classList.remove("on");if(lb.classList.contains("single"))return;if(e.key==="ArrowLeft")show(cur-1);if(e.key==="ArrowRight")show(cur+1)});
 
 var tt=document.getElementById("tt"),root=document.documentElement;
 function label(){tt.textContent=root.getAttribute("data-theme")==="dark"?"\u2600 Light":"\u263E Navy"}
@@ -59,5 +59,15 @@ label();
     if(im.length<2||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches))return;
     p.classList.add("run");im[0].classList.add("on");
     setTimeout(function(){setInterval(function(){im[i].classList.remove("on");i=(i+1)%im.length;im[i].classList.add("on")},3500)},Math.random()*2500);
+  });
+})();
+
+(function(){
+  [].slice.call(document.querySelectorAll(".tribute .note")).forEach(function(n){
+    n.addEventListener("click",function(){
+      var nm=n.closest(".tribute").querySelector(".by>span:not(.av)").firstChild.textContent;
+      im.src=n.src;im.alt=n.alt;cp.textContent="Handwritten tribute from "+nm;
+      lb.classList.add("single","on");
+    });
   });
 })();

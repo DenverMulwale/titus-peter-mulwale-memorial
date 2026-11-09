@@ -128,3 +128,11 @@ footer h3{font-size:2rem;color:var(--gold)}footer p{margin:8px 0 0;opacity:.8;fo
 .tribute:nth-child(3n) .by>img,.tribute:nth-child(3n) .by>.av,.tribute:nth-child(3n) .by>.pics{animation-delay:-3.3s}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 @media (prefers-reduced-motion:reduce){.tribute .by>img,.tribute .by>.av,.tribute .by>.pics{animation:none}}
+
+/* handwritten tribute cards */
+.tribute.note-card .body{max-height:none !important}
+.tribute.note-card .body::after{display:none}
+.tribute .note{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--line)}
+
+.tribute .note{cursor:zoom-in}
+.lb.single .pv,.lb.single .nx{display:none}
